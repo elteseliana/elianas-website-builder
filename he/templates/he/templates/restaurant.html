@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ember &amp; Oak — מסעדה</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Heebo:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --charcoal: #1C1A17;
+    --charcoal-2: #262320;
+    --cream: #F4EFE6;
+    --cream-soft: #C9C1B2;
+    --ember: #C2562C;
+    --gold: #C8A24B;
+    --line: rgba(244,239,230,.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Heebo', system-ui, sans-serif; background: var(--charcoal); color: var(--cream); line-height: 1.75; -webkit-font-smoothing: antialiased; }
+  .serif { font-family: 'Frank Ruhl Libre', serif; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 44px; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: rgba(28,26,23,.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav-inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 18px 44px; }
+  .logo { font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: 25px; direction: ltr; }
+  .logo .amp { color: var(--ember); }
+  .nav-right { display: flex; align-items: center; gap: 24px; }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a { color: var(--cream); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--ember); }
+  .nav-cta { border: 1px solid var(--gold); color: var(--gold) !important; padding: 10px 22px; border-radius: 2px; }
+  .nav-cta:hover { background: var(--gold); color: var(--charcoal) !important; }
+  .lang-toggle { font-family: 'Heebo', sans-serif; font-size: 13px; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--gold); text-decoration: none; }
+  .lang-toggle:hover { background: var(--gold); color: var(--charcoal); }
+
+  header.hero {
+    position: relative; min-height: 100vh;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    background: linear-gradient(180deg, rgba(28,26,23,.55) 0%, rgba(28,26,23,.35) 45%, rgba(28,26,23,.82) 100%),
+                url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+  }
+  .hero-inner { max-width: 820px; padding: 0 44px; }
+  .hero-eyebrow { font-size: 13px; letter-spacing: 1px; color: var(--gold); margin-bottom: 28px; }
+  header.hero h1 { font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(52px, 8vw, 100px); line-height: 1.1; margin-bottom: 26px; }
+  header.hero h1 em { font-style: normal; color: var(--ember); }
+  .hero-sub { font-size: 20px; color: var(--cream-soft); max-width: 540px; margin: 0 auto 40px; }
+  .hero-actions { display: flex; gap: 16px; justify-content: center; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; border-radius: 2px; font-weight: 600; font-size: 15px; text-decoration: none; transition: transform .15s, background .2s; }
+  .btn-fill { background: var(--ember); color: var(--cream); }
+  .btn-fill:hover { transform: translateY(-2px); background: #d3673c; }
+  .btn-line { border: 1px solid var(--cream-soft); color: var(--cream); }
+  .btn-line:hover { background: rgba(244,239,230,.1); }
+
+  section { padding: 120px 0; }
+  .eyebrow { font-size: 13px; letter-spacing: 1px; color: var(--ember); margin-bottom: 18px; }
+
+  .intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .intro h2 { font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(34px, 4vw, 54px); line-height: 1.15; margin-bottom: 24px; }
+  .intro h2 em { font-style: normal; color: var(--gold); }
+  .intro p { font-size: 19px; color: var(--cream-soft); margin-bottom: 20px; }
+  .intro-img { border-radius: 4px; overflow: hidden; aspect-ratio: 4/5; }
+  .intro-img img { width: 100%; height: 100%; object-fit: cover; }
+
+  .menu-head { text-align: center; margin-bottom: 64px; }
+  .menu-head h2 { font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(38px, 5vw, 62px); }
+  .menu-head h2 em { font-style: normal; color: var(--ember); }
+  .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px 80px; }
+  .menu-col h3 { font-family: 'Frank Ruhl Libre', serif; font-size: 26px; color: var(--gold); margin-bottom: 26px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+  .dish { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 24px; }
+  .dish .d-name { font-weight: 600; font-size: 18px; margin-bottom: 4px; }
+  .dish .d-desc { font-size: 15px; color: var(--cream-soft); }
+  .dish .d-price { font-family: 'Frank Ruhl Libre', serif; font-size: 20px; color: var(--ember); white-space: nowrap; direction: ltr; }
+  .dotfill { flex: 1; border-bottom: 1px dotted rgba(244,239,230,.25); transform: translateY(-5px); }
+
+  .feature { background: var(--charcoal-2); border-radius: 6px; padding: 70px 60px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; text-align: center; }
+  .feature .icon { font-family: 'Frank Ruhl Libre', serif; font-size: 38px; color: var(--ember); margin-bottom: 14px; direction: ltr; }
+  .feature h4 { font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: 22px; margin-bottom: 10px; }
+  .feature p { font-size: 16px; color: var(--cream-soft); }
+
+  .visit { text-align: center; }
+  .visit h2 { font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: clamp(42px, 6vw, 76px); line-height: 1.1; }
+  .visit h2 em { font-style: normal; color: var(--ember); }
+  .visit p { font-size: 20px; color: var(--cream-soft); margin: 22px auto 38px; max-width: 480px; }
+  .visit-info { display: flex; justify-content: center; gap: 64px; margin-top: 54px; flex-wrap: wrap; }
+  .visit-info .col .lbl { font-size: 13px; letter-spacing: 1px; color: var(--gold); margin-bottom: 8px; }
+  .visit-info .col p { font-size: 17px; color: var(--cream); margin: 0; }
+
+  footer { border-top: 1px solid var(--line); padding: 40px 0; }
+  .foot-inner { display: flex; justify-content: space-between; align-items: center; }
+  .foot-inner .logo { font-size: 21px; }
+  .foot-inner span { font-size: 14px; color: var(--cream-soft); }
+
+  @media (max-width: 820px) {
+    .wrap, .nav-inner, .hero-inner { padding-left: 22px; padding-right: 22px; }
+    .nav-inner { padding-top: 15px; padding-bottom: 15px; }
+    .nav-links { display: none; }
+    .logo { font-size: 21px; }
+    header.hero { min-height: auto; padding: 90px 0 60px; background-attachment: scroll; }
+    header.hero h1 { font-size: clamp(42px, 12vw, 76px); }
+    section { padding: 70px 0; }
+    .intro { grid-template-columns: 1fr; gap: 40px; }
+    .menu-grid { grid-template-columns: 1fr; gap: 40px 0; }
+    .feature { grid-template-columns: 1fr; padding: 48px 28px; gap: 36px; }
+    .visit-info { gap: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">Ember <span class="amp">&amp;</span> Oak</div>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#menu">תפריט</a>
+        <a href="#about">אודות</a>
+        <a href="#visit">ביקור</a>
+        <a href="#visit" class="nav-cta">הזמנת מקום</a>
+      </div>
+      <a href="../../templates/restaurant.html" class="lang-toggle">EN</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">על אש גלויה · עונתי · משנת 2026</div>
+    <h1>אש, עשן<br />ו<em>חברה טובה</em>.</h1>
+    <p class="hero-sub">מטבח שכונתי שמבשל על אש גלויה — מנות כנות, יין טבעי, וחלל שהומה עד שעה מאוחרת.</p>
+    <div class="hero-actions">
+      <a href="#visit" class="btn btn-fill">הזמנת שולחן</a>
+      <a href="#menu" class="btn btn-line">לתפריט</a>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="wrap">
+  <div class="intro">
+    <div>
+      <div class="eyebrow">המטבח שלנו</div>
+      <h2>מבושל על <em>אש גלויה</em>, מוגש בלי התחכמות.</h2>
+      <p>Ember &amp; Oak התחיל מגריל אחד על אש עצים ומאמונה שהאוכל הכי טוב הוא פשוט, עונתי ומשותף. אנחנו רוכשים מחוות מקומיות ונותנים לאש לדבר.</p>
+      <p>משכו כיסא לבר, הזמינו קצת מהכול, והישארו.</p>
+    </div>
+    <div class="intro-img">
+      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1000&q=80" alt="שף מסדר מנה במטבח" />
+    </div>
+  </div>
+</section>
+
+<section id="menu" class="wrap">
+  <div class="menu-head">
+    <div class="eyebrow" style="text-align:center;">טעימה מתוך</div>
+    <h2>ה<em>תפריט</em></h2>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-col">
+      <h3>לפתיחה</h3>
+      <div class="dish"><div><div class="d-name">לחם מחמצת על האש</div><div class="d-desc">חמאת תרבית, מלח מעושן</div></div><span class="dotfill"></span><span class="d-price">₪9</span></div>
+      <div class="dish"><div><div class="d-name">כרישה חרוכה</div><div class="d-desc">אגוזי לוז, חמאה חומה, לימון</div></div><span class="dotfill"></span><span class="d-price">₪14</span></div>
+      <div class="dish"><div><div class="d-name">טרטר בקר</div><div class="d-desc">צלפים, חלמון, לחם קלוי</div></div><span class="dotfill"></span><span class="d-price">₪18</span></div>
+    </div>
+    <div class="menu-col">
+      <h3>מהאש</h3>
+      <div class="dish"><div><div class="d-name">חצי עוף</div><div class="d-desc">צלוי על עצים, לימון חרוך</div></div><span class="dotfill"></span><span class="d-price">₪26</span></div>
+      <div class="dish"><div><div class="d-name">אנטריקוט מיושן</div><div class="d-desc">מח עצם, גרגיר נחלים</div></div><span class="dotfill"></span><span class="d-price">₪42</span></div>
+      <div class="dish"><div><div class="d-name">לברק שלם</div><div class="d-desc">סלסה ורדה, שומר על האש</div></div><span class="dotfill"></span><span class="d-price">₪32</span></div>
+    </div>
+    <div class="menu-col">
+      <h3>תוספות</h3>
+      <div class="dish"><div><div class="d-name">תפוחי אדמה על האש</div><div class="d-desc">רוזמרין, איולי שום</div></div><span class="dotfill"></span><span class="d-price">₪10</span></div>
+      <div class="dish"><div><div class="d-name">ירוקים על הגריל</div><div class="d-desc">צ׳ילי, אנשובי, פרמזן</div></div><span class="dotfill"></span><span class="d-price">₪11</span></div>
+    </div>
+    <div class="menu-col">
+      <h3>מתוקים</h3>
+      <div class="dish"><div><div class="d-name">עוגת גבינה באסקית</div><div class="d-desc">דבש, מלח ים</div></div><span class="dotfill"></span><span class="d-price">₪12</span></div>
+      <div class="dish"><div><div class="d-name">טארט שוקולד מריר</div><div class="d-desc">שמנת מעושנת, קקאו</div></div><span class="dotfill"></span><span class="d-price">₪11</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="feature">
+    <div><div class="icon serif">i</div><h4>פתוחים עד מאוחר</h4><p>המטבח פועל עד חצות, הבר קצת אחרי. מבקרים מזדמנים תמיד מוזמנים לבר.</p></div>
+    <div><div class="icon serif">ii</div><h4>יין טבעי</h4><p>רשימה מתחלפת של בקבוקים בהתערבות מינימלית, וקוקטיילים סביב העונה.</p></div>
+    <div><div class="icon serif">iii</div><h4>אירועים פרטיים</h4><p>הזמינו את החדר האחורי לארוחות של עד עשרים — בסגנון משפחתי, בחירת השף.</p></div>
+  </div>
+</section>
+
+<section id="visit" class="wrap visit">
+  <div class="eyebrow" style="text-align:center;">בואו רעבים</div>
+  <h2>תמצאו אותנו ליד ה<em>אש</em>.</h2>
+  <p>מומלץ להזמין מקום לארוחת ערב. הבר הוא כל הקודם זוכה, ותמיד כיף.</p>
+  <div class="visit-info">
+    <div class="col"><div class="lbl">שעות</div><p>ד׳–שבת · 17:00 – חצות</p></div>
+    <div class="col"><div class="lbl">איפה אנחנו</div><p>הכבשן 8, העיר שלכם</p></div>
+    <div class="col"><div class="lbl">הזמנות</div><p>book@emberandoak.com</p></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div class="logo">Ember <span class="amp">&amp;</span> Oak</div>
+    <span class="serif">תבנית מאת אליאנה — מבושל על אש גלויה.</span>
+  </div>
+</footer>
+
+</body>
+</html>
