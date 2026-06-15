@@ -6,7 +6,7 @@
 <title>Eliana — Web Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   :root {
     --paper: #F2EDE3;
@@ -49,6 +49,13 @@
   @keyframes blink { 50% { opacity: 0; } }
 
   .nav-links { display: flex; gap: 34px; }
+  .nav-right { display: flex; align-items: center; gap: 26px; }
+  .lang-toggle {
+    font-family: 'Heebo', 'JetBrains Mono', sans-serif; font-size: 14px;
+    border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px;
+    color: var(--accent); text-decoration: none; transition: background .2s, color .2s;
+  }
+  .lang-toggle:hover { background: var(--accent); color: var(--paper); }
   .nav-links a {
     color: var(--ink-soft); text-decoration: none; font-size: 14px; font-weight: 500;
     transition: color .2s;
@@ -227,11 +234,14 @@
 <nav>
   <div class="nav-inner">
     <div class="brand"><span class="prompt">~/</span>eliana<span class="cursor">▊</span></div>
-    <div class="nav-links">
-      <a href="#about"><span>01</span>about</a>
-      <a href="#work"><span>02</span>work</a>
-      <a href="#skills"><span>03</span>skills</a>
-      <a href="#contact"><span>04</span>contact</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#about"><span>01</span>about</a>
+        <a href="#work"><span>02</span>work</a>
+        <a href="#skills"><span>03</span>skills</a>
+        <a href="#contact"><span>04</span>contact</a>
+      </div>
+      <a href="he/index.html" class="lang-toggle">עברית</a>
     </div>
   </div>
 </nav>
