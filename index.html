@@ -13,16 +13,15 @@
     --paper-2: #EAE3D5;
     --ink: #1A1714;
     --ink-soft: #5A534A;
-    --accent: #3D4A2E;      /* deep olive */
-    --accent-2: #C4642F;    /* warm ember, used sparingly */
+    --accent: #3D4A2E;
+    --accent-2: #C4642F;
+    --wa: #25D366;
     --line: #D8CFBE;
     --radius: 4px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
-
   body {
     font-family: 'Inter', system-ui, sans-serif;
     background: var(--paper);
@@ -30,13 +29,10 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
-
   .wrap { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
-
   .mono { font-family: 'JetBrains Mono', monospace; }
   .display { font-family: 'Space Grotesk', sans-serif; }
 
-  /* ---------- NAV ---------- */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 50;
     background: rgba(242, 237, 227, 0.82);
@@ -60,7 +56,6 @@
   .nav-links a:hover { color: var(--ink); }
   .nav-links a span { color: var(--accent); margin-right: 4px; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
 
-  /* ---------- HERO ---------- */
   header.hero {
     min-height: 100vh;
     display: grid;
@@ -74,12 +69,10 @@
     letter-spacing: 0.5px; margin-bottom: 28px;
     display: inline-flex; align-items: center; gap: 10px;
   }
-  .hero-copy .eyebrow::before {
-    content: ''; width: 30px; height: 1px; background: var(--accent);
-  }
+  .hero-copy .eyebrow::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
   .hero-copy h1 {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(48px, 6vw, 86px);
+    font-size: clamp(40px, 6vw, 86px);
     line-height: 0.98; letter-spacing: -2.5px; font-weight: 700;
     margin-bottom: 28px;
   }
@@ -87,7 +80,7 @@
   .hero-copy p.lede {
     font-size: 19px; color: var(--ink-soft); max-width: 440px; margin-bottom: 40px;
   }
-  .hero-cta { display: flex; gap: 16px; align-items: center; }
+  .hero-cta { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
   .btn {
     display: inline-flex; align-items: center; gap: 10px;
     padding: 14px 26px; border-radius: var(--radius);
@@ -99,19 +92,14 @@
   .btn-ghost { color: var(--ink); border: 1px solid var(--ink); }
   .btn-ghost:hover { background: var(--ink); color: var(--paper); }
 
-  /* hero image with terminal frame */
   .hero-visual { position: relative; }
   .frame {
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    overflow: hidden;
-    background: #fff;
+    border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff;
     box-shadow: 0 30px 70px -30px rgba(26,23,20,.4);
   }
   .frame-bar {
     display: flex; align-items: center; gap: 8px;
-    padding: 12px 16px; background: var(--paper-2);
-    border-bottom: 1px solid var(--line);
+    padding: 12px 16px; background: var(--paper-2); border-bottom: 1px solid var(--line);
   }
   .dot { width: 11px; height: 11px; border-radius: 50%; }
   .dot.r { background: #D27B6A; } .dot.y { background: #D9B26A; } .dot.g { background: #8AA06A; }
@@ -126,20 +114,12 @@
   }
   .float-tag b { color: var(--accent-2); }
 
-  /* ---------- SECTION SHELL ---------- */
   section { padding: 110px 0; border-top: 1px solid var(--line); }
   .sec-head { margin-bottom: 56px; }
-  .sec-head .num {
-    font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent);
-    letter-spacing: 1px;
-  }
-  .sec-head h2 {
-    font-family: 'Space Grotesk', sans-serif; font-size: clamp(32px, 4vw, 48px);
-    letter-spacing: -1.5px; font-weight: 700; margin-top: 10px;
-  }
+  .sec-head .num { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent); letter-spacing: 1px; }
+  .sec-head h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(32px, 4vw, 48px); letter-spacing: -1.5px; font-weight: 700; margin-top: 10px; }
   .sec-head p { color: var(--ink-soft); max-width: 520px; margin-top: 12px; font-size: 17px; }
 
-  /* ---------- ABOUT ---------- */
   .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 70px; align-items: start; }
   .about-grid p { font-size: 18px; color: var(--ink-soft); margin-bottom: 22px; }
   .about-grid p strong { color: var(--ink); font-weight: 600; }
@@ -147,16 +127,26 @@
   .stat-row { padding: 22px 24px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: baseline; }
   .stat-row:last-child { border-bottom: none; }
   .stat-row .big { font-family: 'Space Grotesk', sans-serif; font-size: 34px; font-weight: 700; letter-spacing: -1px; }
-  .stat-row .lbl { font-size: 14px; color: var(--ink-soft); }
+  .stat-row .lbl { font-size: 14px; color: var(--ink-soft); text-align: right; }
 
-  /* ---------- PROJECTS ---------- */
   .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
   .card {
+    position: relative;
     border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
     background: #fff; transition: transform .2s, box-shadow .2s, border-color .2s;
     display: flex; flex-direction: column;
   }
   .card:hover { transform: translateY(-4px); box-shadow: 0 24px 50px -28px rgba(26,23,20,.45); border-color: var(--accent); }
+  .card-link { text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%; }
+  .card-x {
+    position: absolute; top: 12px; right: 12px; z-index: 5;
+    width: 30px; height: 30px; border-radius: 50%; border: none; cursor: pointer;
+    background: rgba(26,23,20,.75); color: var(--paper); font-size: 18px; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity .18s, background .18s, transform .18s;
+  }
+  .card:hover .card-x { opacity: 1; }
+  .card-x:hover { background: var(--accent-2); transform: scale(1.1); }
   .card-img { height: 200px; background: var(--paper-2); position: relative; overflow: hidden; }
   .card-img img { width: 100%; height: 100%; object-fit: cover; }
   .card-tag {
@@ -170,7 +160,6 @@
   .card-meta { display: flex; gap: 8px; flex-wrap: wrap; }
   .chip { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); border: 1px solid var(--line); padding: 4px 9px; border-radius: 3px; }
 
-  /* ---------- SKILLS ---------- */
   .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .skill-block { border: 1px solid var(--line); border-radius: 8px; padding: 28px; background: #fff; }
   .skill-block .k { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); margin-bottom: 16px; }
@@ -180,24 +169,54 @@
   .skill-block li:last-child { border-bottom: none; }
   .skill-block li span { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); }
 
-  /* ---------- CONTACT ---------- */
   .contact { text-align: center; }
-  .contact h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(40px, 6vw, 78px); letter-spacing: -2px; font-weight: 700; line-height: 1.02; }
+  .contact h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(36px, 6vw, 78px); letter-spacing: -2px; font-weight: 700; line-height: 1.02; }
   .contact h2 em { font-style: normal; color: var(--accent); }
   .contact p { color: var(--ink-soft); font-size: 19px; margin: 22px auto 40px; max-width: 460px; }
-  .mail-btn {
+  .wa-btn {
     display: inline-flex; align-items: center; gap: 12px;
-    font-family: 'JetBrains Mono', monospace; font-size: 17px;
-    background: var(--ink); color: var(--paper); padding: 18px 32px; border-radius: var(--radius);
-    text-decoration: none; transition: transform .15s, box-shadow .2s;
+    font-size: 17px; font-weight: 600;
+    background: var(--wa); color: #fff; padding: 18px 34px; border-radius: 999px;
+    text-decoration: none; transition: transform .15s, box-shadow .2s, background .2s;
   }
-  .mail-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 34px -10px rgba(26,23,20,.5); }
-  .mail-btn .prompt { color: var(--accent-2); }
+  .wa-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 34px -10px rgba(37,211,102,.55); background: #1ebe5a; }
+  .wa-btn svg { width: 22px; height: 22px; fill: #fff; }
 
-  /* ---------- FOOTER ---------- */
   footer { border-top: 1px solid var(--line); padding: 36px 0; }
-  .foot-inner { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--ink-soft); }
+  .foot-inner { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--ink-soft); flex-wrap: wrap; gap: 12px; }
+  .foot-inner a { color: var(--accent); text-decoration: none; }
   .foot-inner .mono { font-size: 12px; }
+
+  @media (max-width: 860px) {
+    .wrap, .nav-inner { padding-left: 22px; padding-right: 22px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 13px; }
+    .nav-links a span { display: none; }
+
+    header.hero {
+      grid-template-columns: 1fr;
+      gap: 44px;
+      padding: 116px 22px 60px;
+      min-height: auto;
+    }
+    .hero-visual { order: 2; }
+    .frame img { height: 280px; }
+    .float-tag { left: auto; right: 16px; bottom: -16px; }
+
+    section { padding: 64px 0; }
+    .sec-head { margin-bottom: 36px; }
+
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .projects { grid-template-columns: 1fr; gap: 20px; }
+    .skills { grid-template-columns: 1fr; gap: 16px; }
+    .card-x { opacity: 1; }
+  }
+  @media (max-width: 480px) {
+    .hero-copy h1 { letter-spacing: -1.5px; }
+    .hero-cta { flex-direction: column; align-items: stretch; }
+    .hero-cta .btn { justify-content: center; }
+    .foot-inner { flex-direction: column; align-items: flex-start; }
+  }
 </style>
 </head>
 <body>
@@ -214,12 +233,11 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <header class="hero">
   <div class="hero-copy">
     <div class="eyebrow">web developer · building for the browser</div>
     <h1>I design &amp; build <em>websites</em> that feel effortless.</h1>
-    <p class="lede">Clean, fast, hand-crafted front-ends — from the first wireframe to the deploy. This page is one of them.</p>
+    <p class="lede">Clean, fast, hand-crafted sites for small businesses — from the first sketch to the live link. This page is one of them.</p>
     <div class="hero-cta">
       <a href="#work" class="btn btn-primary">View my work →</a>
       <a href="#contact" class="btn btn-ghost">Get in touch</a>
@@ -239,82 +257,91 @@
 
 <div class="wrap">
 
-  <!-- ABOUT -->
   <section id="about">
     <div class="sec-head">
       <div class="num">01 / about</div>
-      <h2>A developer who sweats the details.</h2>
+      <h2>Hi, I'm Eliana.</h2>
     </div>
     <div class="about-grid">
       <div>
-        <p>I'm Eliana — a front-end developer focused on building websites that are <strong>quick, accessible, and a pleasure to use</strong>. I care about the small things: how a button feels, how fast a page loads, how clean the markup is underneath.</p>
-        <p>I work end to end — taking an idea from a rough sketch to a polished, deployed site. Everything you see on this page was written by hand and shipped to Vercel.</p>
-        <p>When I'm not coding, I'm usually <strong>reading, sketching layouts, or pulling apart sites I admire</strong> to figure out what makes them tick.</p>
+        <p>I'm a <strong>16-year-old web developer</strong> who builds clean, fast websites for small businesses — and I love every part of it. What started as curiosity about how websites work has turned into something I take seriously.</p>
+        <p>I build <strong>custom designs, not cookie-cutter templates</strong>. Every site is hand-coded to be quick, easy to use, and to look great on a phone or a computer. And because I'm just getting started, I keep my work <strong>genuinely affordable</strong> for businesses finding their feet.</p>
+        <p>I work with you from the first idea to the live link — friendly, straightforward, and happy to explain anything along the way. The templates below are real, live pages I've built. Have a look around.</p>
       </div>
       <div class="stat-card">
-        <div class="stat-row"><span class="big">100%</span><span class="lbl">hand-written code</span></div>
-        <div class="stat-row"><span class="big">A+</span><span class="lbl">performance focus</span></div>
-        <div class="stat-row"><span class="big">∞</span><span class="lbl">attention to detail</span></div>
+        <div class="stat-row"><span class="big">16</span><span class="lbl">years old<br />&amp; building</span></div>
+        <div class="stat-row"><span class="big">100%</span><span class="lbl">hand-coded,<br />custom work</span></div>
+        <div class="stat-row"><span class="big">📱💻</span><span class="lbl">looks great on<br />every screen</span></div>
       </div>
     </div>
   </section>
 
-  <!-- WORK -->
   <section id="work">
     <div class="sec-head">
       <div class="num">02 / work</div>
-      <h2>Selected projects.</h2>
-      <p>A few placeholder pieces for now — swap in your real projects, links, and screenshots when they're ready.</p>
+      <h2>Live templates.</h2>
+      <p>Real pages I've designed and built. Tap any card to open the live site. Use the × to hide one you're not interested in.</p>
     </div>
     <div class="projects">
-      <a class="card" href="templates/flower-shop.html" style="text-decoration:none;color:inherit;">
-        <div class="card-img">
-          <span class="card-tag mono">live template</span>
-          <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=900&q=80" alt="Flower shop template preview" />
-        </div>
-        <div class="card-body">
-          <h3>Wildform — Florist</h3>
-          <p>A romantic, editorial template for a botanical studio. Click to view the live page.</p>
-          <div class="card-meta"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">template</span></div>
-        </div>
-      </a>
-      <article class="card">
-        <div class="card-img">
-          <span class="card-tag mono">web app</span>
-          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80" alt="Project preview" />
-        </div>
-        <div class="card-body">
-          <h3>Tasklytic</h3>
-          <p>A clean dashboard concept with a focus on clarity, fast interactions, and keyboard-friendly navigation.</p>
-          <div class="card-meta"><span class="chip">React</span><span class="chip">Vite</span></div>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-img">
-          <span class="card-tag mono">portfolio</span>
-          <img src="https://images.unsplash.com/photo-1545665277-5937489579f2?auto=format&fit=crop&w=900&q=80" alt="Project preview" />
-        </div>
-        <div class="card-body">
-          <h3>Field Notes</h3>
-          <p>A minimal portfolio for a photographer — image-first, typographic, and ruthlessly fast to load.</p>
-          <div class="card-meta"><span class="chip">HTML</span><span class="chip">GSAP</span></div>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-img">
-          <span class="card-tag mono">e-commerce</span>
-          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80" alt="Project preview" />
-        </div>
-        <div class="card-body">
-          <h3>Maker Market</h3>
-          <p>A small storefront concept with a focus on a frictionless cart and a warm, tactile product grid.</p>
-          <div class="card-meta"><span class="chip">Next.js</span><span class="chip">Stripe</span></div>
-        </div>
-      </article>
+      <div class="card">
+        <button class="card-x" aria-label="Hide this card" title="Hide">×</button>
+        <a class="card-link" href="templates/flower-shop.html">
+          <div class="card-img">
+            <span class="card-tag mono">live template</span>
+            <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=900&q=80" alt="Flower shop template preview" />
+          </div>
+          <div class="card-body">
+            <h3>Wildform — Florist</h3>
+            <p>A romantic, editorial template for a botanical studio. Tap to view the live page.</p>
+            <div class="card-meta"><span class="chip">florist</span><span class="chip">shop</span></div>
+          </div>
+        </a>
+      </div>
+      <div class="card">
+        <button class="card-x" aria-label="Hide this card" title="Hide">×</button>
+        <a class="card-link" href="templates/restaurant.html">
+          <div class="card-img">
+            <span class="card-tag mono">live template</span>
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80" alt="Restaurant template preview" />
+          </div>
+          <div class="card-body">
+            <h3>Ember &amp; Oak — Restaurant</h3>
+            <p>A moody, wood-fired restaurant template with a printed-menu layout. Tap to view.</p>
+            <div class="card-meta"><span class="chip">restaurant</span><span class="chip">menu</span></div>
+          </div>
+        </a>
+      </div>
+      <div class="card">
+        <button class="card-x" aria-label="Hide this card" title="Hide">×</button>
+        <a class="card-link" href="templates/photographer.html">
+          <div class="card-img">
+            <span class="card-tag mono">live template</span>
+            <img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=900&q=80" alt="Photographer template preview" />
+          </div>
+          <div class="card-body">
+            <h3>Mara Vale — Photographer</h3>
+            <p>A dark, elegant portfolio with a masonry gallery. Tap to view the live page.</p>
+            <div class="card-meta"><span class="chip">portfolio</span><span class="chip">gallery</span></div>
+          </div>
+        </a>
+      </div>
+      <div class="card">
+        <button class="card-x" aria-label="Hide this card" title="Hide">×</button>
+        <a class="card-link" href="templates/cafe-bakery.html">
+          <div class="card-img">
+            <span class="card-tag mono">live template</span>
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80" alt="Cafe bakery template preview" />
+          </div>
+          <div class="card-body">
+            <h3>Flour &amp; Hearth — Café</h3>
+            <p>A warm bakery &amp; café template with a product grid. Tap to view the live page.</p>
+            <div class="card-meta"><span class="chip">cafe</span><span class="chip">bakery</span></div>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- SKILLS -->
   <section id="skills">
     <div class="sec-head">
       <div class="num">03 / skills</div>
@@ -328,17 +355,17 @@
           <li>HTML5 <span>structure</span></li>
           <li>CSS3 <span>layout</span></li>
           <li>JavaScript <span>logic</span></li>
-          <li>TypeScript <span>safety</span></li>
+          <li>Responsive <span>mobile</span></li>
         </ul>
       </div>
       <div class="skill-block">
-        <div class="k mono">// frameworks</div>
-        <h4>Build</h4>
+        <div class="k mono">// design</div>
+        <h4>Design</h4>
         <ul>
-          <li>React <span>ui</span></li>
-          <li>Next.js <span>ssr</span></li>
-          <li>Vite <span>tooling</span></li>
-          <li>Tailwind <span>style</span></li>
+          <li>Clean layouts <span>ui</span></li>
+          <li>Typography <span>type</span></li>
+          <li>Custom looks <span>brand</span></li>
+          <li>Figma <span>mockups</span></li>
         </ul>
       </div>
       <div class="skill-block">
@@ -347,8 +374,8 @@
         <ul>
           <li>Git <span>version</span></li>
           <li>Vercel <span>deploy</span></li>
-          <li>Figma <span>design</span></li>
-          <li>Responsive <span>a11y</span></li>
+          <li>Fast loads <span>speed</span></li>
+          <li>Live links <span>online</span></li>
         </ul>
       </div>
     </div>
@@ -356,21 +383,37 @@
 
 </div>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="wrap contact">
     <h2>Let's build<br />something <em>good</em>.</h2>
-    <p>Have a project, a question, or just want to say hi? My inbox is open.</p>
-    <a href="mailto:eliana@example.com" class="mail-btn"><span class="prompt">$</span> mail eliana@example.com</a>
+    <p>Want a website, or just have a question? Message me on WhatsApp — I'm quick to reply.</p>
+    <a href="https://wa.me/972549112175?text=Hi%20Eliana%2C%20I%20saw%20your%20portfolio" class="wa-btn" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.788-.989a9.873 9.873 0 00.199.182zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+      Message me on WhatsApp
+    </a>
   </div>
 </section>
 
 <footer>
   <div class="wrap foot-inner">
-    <span class="mono">© 2026 eliana — built &amp; deployed by hand</span>
-    <span class="mono">~/ deployed on vercel</span>
+    <span class="mono">© 2026 Eliana — hand-coded websites</span>
+    <span class="mono"><a href="https://wa.me/972549112175?text=Hi%20Eliana%2C%20I%20saw%20your%20portfolio" target="_blank" rel="noopener">WhatsApp: 054-911-2175</a></span>
   </div>
 </footer>
+
+<script>
+  document.querySelectorAll('.card-x').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var card = btn.closest('.card');
+      card.style.transition = 'opacity .2s, transform .2s';
+      card.style.opacity = '0';
+      card.style.transform = 'scale(.95)';
+      setTimeout(function () { card.remove(); }, 200);
+    });
+  });
+</script>
 
 </body>
 </html>
