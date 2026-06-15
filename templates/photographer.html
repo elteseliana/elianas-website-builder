@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mara Vale — Photographer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0E0E0F;
+    --bg-2: #161617;
+    --fg: #F3F1EC;
+    --fg-soft: #9A968E;
+    --accent: #C9A86A;
+    --line: rgba(243,241,236,.12);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .serif { font-family: 'Cormorant Garamond', serif; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
+
+  nav { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 1240px; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 26px 40px; }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 26px; letter-spacing: 2px; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 34px; align-items: center; }
+  .nav-links a { color: var(--fg); text-decoration: none; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; transition: color .2s; }
+  .nav-links a:hover { color: var(--accent); }
+
+  header.hero { min-height: 100vh; display: flex; align-items: center; background: linear-gradient(90deg, rgba(14,14,15,.85) 0%, rgba(14,14,15,.4) 50%, rgba(14,14,15,.2) 100%), url('https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; }
+  .hero-inner { max-width: 1240px; margin: 0 auto; padding: 0 40px; width: 100%; }
+  .hero-eyebrow { font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 26px; }
+  header.hero h1 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(56px, 9vw, 130px); line-height: 0.95; letter-spacing: -1px; margin-bottom: 28px; }
+  header.hero h1 em { font-style: italic; }
+  .hero-sub { font-size: 18px; color: var(--fg-soft); max-width: 420px; margin-bottom: 38px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; transition: transform .15s, background .2s, color .2s; }
+  .btn-line { border: 1px solid var(--accent); color: var(--accent); }
+  .btn-line:hover { background: var(--accent); color: var(--bg); transform: translateY(-2px); }
+
+  section { padding: 110px 0; }
+  .eyebrow { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+
+  .intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .intro h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(36px, 4.5vw, 60px); line-height: 1.05; margin-bottom: 22px; }
+  .intro h2 em { font-style: italic; color: var(--accent); }
+  .intro p { font-size: 17px; color: var(--fg-soft); margin-bottom: 18px; }
+  .intro-img { aspect-ratio: 4/5; overflow: hidden; }
+  .intro-img img { width: 100%; height: 100%; object-fit: cover; }
+
+  .gallery-head { text-align: center; margin-bottom: 56px; }
+  .gallery-head h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(40px, 5vw, 68px); }
+  .gallery-head h2 em { font-style: italic; color: var(--accent); }
+  .gallery { columns: 3; column-gap: 16px; }
+  .gallery img { width: 100%; margin-bottom: 16px; display: block; border-radius: 2px; transition: opacity .3s; }
+  .gallery img:hover { opacity: .82; }
+
+  .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .svc { background: var(--bg); padding: 44px 36px; }
+  .svc .n { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--accent); margin-bottom: 14px; }
+  .svc h4 { font-family: 'Cormorant Garamond', serif; font-size: 26px; margin-bottom: 12px; }
+  .svc p { font-size: 15px; color: var(--fg-soft); }
+
+  .contact { text-align: center; }
+  .contact h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(44px, 6vw, 88px); line-height: 1.0; }
+  .contact h2 em { font-style: italic; color: var(--accent); }
+  .contact p { font-size: 18px; color: var(--fg-soft); margin: 22px auto 38px; max-width: 440px; }
+
+  footer { border-top: 1px solid var(--line); padding: 38px 0; }
+  .foot-inner { display: flex; justify-content: space-between; align-items: center; }
+  .foot-inner span { font-size: 13px; color: var(--fg-soft); }
+
+  @media (max-width: 760px) {
+    .wrap, nav, .hero-inner { padding-left: 22px; padding-right: 22px; }
+    .nav-links { gap: 18px; }
+    .nav-links a { font-size: 11px; letter-spacing: 1px; }
+    .logo { font-size: 21px; }
+    section { padding: 70px 0; }
+    .intro { grid-template-columns: 1fr; gap: 40px; }
+    .gallery { columns: 2; column-gap: 12px; }
+    .services { grid-template-columns: 1fr; }
+    header.hero { background-position: 65% center; }
+  }
+  @media (max-width: 460px) { .gallery { columns: 1; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Mara Vale</div>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Portrait &amp; Editorial Photography</div>
+    <h1>Light,<br /><em>caught</em> still.</h1>
+    <p class="hero-sub">A photographer chasing quiet, honest moments — in portraits, weddings, and the spaces between.</p>
+    <a href="#work" class="btn btn-line">View the work</a>
+  </div>
+</header>
+
+<section id="about" class="wrap">
+  <div class="intro">
+    <div>
+      <div class="eyebrow">Behind the Lens</div>
+      <h2>I photograph the <em>in-between</em> moments.</h2>
+      <p>For me, the best frame is rarely the posed one — it's the glance just after, the laugh that wasn't planned. I shoot on film and digital, always chasing natural light.</p>
+      <p>Based wherever the work takes me, available worldwide.</p>
+    </div>
+    <div class="intro-img">
+      <img src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?auto=format&fit=crop&w=900&q=80" alt="Photographer at work" />
+    </div>
+  </div>
+</section>
+
+<section id="work" class="wrap">
+  <div class="gallery-head">
+    <div class="eyebrow" style="text-align:center;">Selected Frames</div>
+    <h2>The <em>Portfolio</em></h2>
+  </div>
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=700&q=80" alt="" />
+    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=700&q=80" alt="" />
+    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&q=80" alt="" />
+    <img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?auto=format&fit=crop&w=700&q=80" alt="" />
+    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=700&q=80" alt="" />
+    <img src="https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&w=700&q=80" alt="" />
+    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=700&q=80" alt="" />
+    <img src="https://images.unsplash.com/photo-1492288991661-058aa541ff43?auto=format&fit=crop&w=700&q=80" alt="" />
+    <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=700&q=80" alt="" />
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="services">
+    <div class="svc"><div class="n serif">i</div><h4>Portraits</h4><p>Individual and family sessions, on location or in studio, shot to feel like you.</p></div>
+    <div class="svc"><div class="n serif">ii</div><h4>Weddings</h4><p>Full-day documentary coverage — the story of the day, told honestly.</p></div>
+    <div class="svc"><div class="n serif">iii</div><h4>Editorial</h4><p>Brand, lookbook, and magazine work with a clean, timeless eye.</p></div>
+  </div>
+</section>
+
+<section id="contact" class="wrap contact">
+  <div class="eyebrow" style="text-align:center;">Let's Work Together</div>
+  <h2>Book a <em>session</em>.</h2>
+  <p>Tell me about your day, your brand, or your idea — I'd love to hear it.</p>
+  <a href="mailto:hello@maravale.com" class="btn btn-line">hello@maravale.com</a>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div class="logo" style="font-size:20px;">Mara Vale</div>
+    <span class="serif" style="font-style:italic;">A template by Eliana</span>
+  </div>
+</footer>
+
+</body>
+</html>
