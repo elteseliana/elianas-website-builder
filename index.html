@@ -189,18 +189,21 @@
 
   @media (max-width: 860px) {
     .wrap, .nav-inner { padding-left: 22px; padding-right: 22px; }
-    .nav-links { gap: 16px; }
-    .nav-links a { font-size: 13px; }
-    .nav-links a span { display: none; }
+    .nav-inner { padding-top: 16px; padding-bottom: 16px; }
+    .nav-links { display: none; }
 
     header.hero {
       grid-template-columns: 1fr;
-      gap: 44px;
-      padding: 116px 22px 60px;
+      gap: 40px;
+      padding: 104px 22px 64px;
       min-height: auto;
     }
+    .hero-copy .eyebrow { font-size: 12px; letter-spacing: 0.3px; }
+    .hero-copy .eyebrow::before { display: none; }
+    .hero-copy h1 { font-size: clamp(38px, 11vw, 60px); margin-bottom: 22px; }
+    .hero-copy p.lede { font-size: 17px; }
     .hero-visual { order: 2; }
-    .frame img { height: 280px; }
+    .frame img { height: 260px; }
     .float-tag { left: auto; right: 16px; bottom: -16px; }
 
     section { padding: 64px 0; }
@@ -212,7 +215,7 @@
     .card-x { opacity: 1; }
   }
   @media (max-width: 480px) {
-    .hero-copy h1 { letter-spacing: -1.5px; }
+    .hero-copy h1 { letter-spacing: -1px; }
     .hero-cta { flex-direction: column; align-items: stretch; }
     .hero-cta .btn { justify-content: center; }
     .foot-inner { flex-direction: column; align-items: flex-start; }
