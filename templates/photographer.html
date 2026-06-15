@@ -22,7 +22,8 @@
   .serif { font-family: 'Cormorant Garamond', serif; }
   .wrap { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
 
-  nav { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 1240px; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 26px 40px; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: rgba(14,14,15,.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav-inner { max-width: 1240px; margin: 0 auto; padding: 18px 40px; display: flex; align-items: center; justify-content: space-between; }
   .logo { font-family: 'Cormorant Garamond', serif; font-size: 26px; letter-spacing: 2px; text-transform: uppercase; }
   .nav-links { display: flex; gap: 34px; align-items: center; }
   .nav-links a { color: var(--fg); text-decoration: none; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; transition: color .2s; }
@@ -71,27 +72,36 @@
   .foot-inner span { font-size: 13px; color: var(--fg-soft); }
 
   @media (max-width: 760px) {
-    .wrap, nav, .hero-inner { padding-left: 22px; padding-right: 22px; }
-    .nav-links { gap: 18px; }
+    .wrap, .nav-inner, .hero-inner { padding-left: 22px; padding-right: 22px; }
+    .nav-inner { padding-top: 15px; padding-bottom: 15px; }
+    .nav-links { gap: 16px; }
     .nav-links a { font-size: 11px; letter-spacing: 1px; }
-    .logo { font-size: 21px; }
+    .logo { font-size: 19px; letter-spacing: 1px; }
+    header.hero { min-height: auto; padding-top: 90px; padding-bottom: 50px; background-position: 65% center; }
+    header.hero h1 { font-size: clamp(46px, 15vw, 72px); }
     section { padding: 70px 0; }
     .intro { grid-template-columns: 1fr; gap: 40px; }
     .gallery { columns: 2; column-gap: 12px; }
     .services { grid-template-columns: 1fr; }
-    header.hero { background-position: 65% center; }
   }
-  @media (max-width: 460px) { .gallery { columns: 1; } }
+  @media (max-width: 460px) {
+    .gallery { columns: 1; }
+    .nav-links { gap: 12px; }
+    .nav-links a { font-size: 10px; }
+    .logo { font-size: 17px; }
+  }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">Mara Vale</div>
-  <div class="nav-links">
-    <a href="#work">Work</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
+  <div class="nav-inner">
+    <div class="logo">Mara Vale</div>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
   </div>
 </nav>
 
