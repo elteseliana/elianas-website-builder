@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Bread Club — Case study · Eliana</title>
+<meta name="description" content="The website and order system for The Bread Club, my own sourdough bakery in Ra'anana.">
+<link rel="alternate" hreflang="he" href="/he/work/the-bread-club/">
+<link rel="alternate" hreflang="en" href="/work/the-bread-club/">
+<meta property="og:image" content="/assets/img/breadclub-hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500&family=Heebo:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">Eliana</a>
+    <nav class="nav" aria-label="Main">
+      <a href="/#work" aria-current="page">Work</a>
+      <a class="opt" href="/#approach">Approach</a>
+      <a href="/#contact">Contact</a>
+      <a class="lang" href="/he/work/the-bread-club/" lang="he" hreflang="he">עברית</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="intro">
+    <div class="wrap">
+      <a class="back" href="/#work">← All work</a>
+      <p class="eyebrow">Case study</p>
+      <h1 class="display">The Bread Club</h1>
+      <p class="lede">My own sourdough bakery in Ra'anana. I bake to order twice a week, so the website had to do more than look good. It had to take orders properly.</p>
+      <div class="cs-facts">
+        <div><span>Client</span>My own business</div>
+        <div><span>My role</span>Baking, photos, design, development</div>
+        <div><span>Languages</span>English &amp; Hebrew</div>
+        <div><span>Live site</span><a href="https://thebreadclub.github.io" target="_blank" rel="noopener">thebreadclub.github.io ↗</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="full">
+    <div class="wrap">
+      <figure class="figure">
+        <div class="frame"><img src="/assets/img/breadclub-hero.jpg" width="2000" height="1250"
+          alt="The Bread Club homepage: a close-up photo of a dark, scored sourdough loaf with the words Sourdough, baked to order."></div>
+        <figcaption>The homepage. The photo is one of my own loaves.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap cs-text">
+      <h2>The problem</h2>
+      <div class="body">
+        <p>Orders used to come in through a Google Form. Keeping track of who ordered what, for which day, and whether there was still room in the oven took a lot of checking by hand.</p>
+        <p>I wanted customers to see the menu, choose a bake day and order in under a minute, in English or Hebrew. And I wanted every order to land in one place I could trust.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="full">
+    <div class="wrap">
+      <figure class="figure">
+        <div class="frame"><img src="/assets/img/breadclub-menu.jpg" width="2000" height="1250" loading="lazy"
+          alt="The menu: a cut-open loaf beside the large words Plain sourdough, the price 35 shekels and an Order this link, marked 01 of 07."></div>
+        <figcaption>The menu shows one flavor at a time, each with its own cut-open loaf, price and order link.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap cs-text">
+      <h2>What I built</h2>
+      <div class="body">
+        <ul>
+          <li><strong>An order page that knows the rules</strong><span>Customers choose Tuesday or Friday. Each day closes at its cutoff time and stops taking orders once all its loaves are booked.</span></li>
+          <li><strong>Prices calculated for you</strong><span>The total, including the delivery fee where it applies, is worked out on the page, so nobody has to do the maths.</span></li>
+          <li><strong>Orders go straight into a Google Sheet</strong><span>Every order lands in my spreadsheet with a number, and repeat taps don't create duplicates. The sheet adds up how many loaves of each flavor to bake.</span></li>
+          <li><strong>English and Hebrew</strong><span>One button switches the whole site, including the order form, between the two languages.</span></li>
+          <li><strong>Tested before it went live</strong><span>Automated tests check prices, cutoffs, the loaf limit and the full ordering flow in a real browser.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="full">
+    <div class="wrap pair">
+      <figure class="figure">
+        <div class="frame"><img src="/assets/img/breadclub-order.jpg" width="2000" height="1250" loading="lazy"
+          alt="The order page: Place an order, with a choice of Tuesday or Friday and their cutoff times, then the list of loaves with plus and minus buttons."></div>
+        <figcaption>The order page: pick a bake day, then your loaves.</figcaption>
+      </figure>
+      <figure class="figure">
+        <div class="frame"><img src="/assets/img/breadclub-gallery.jpg" width="2000" height="1250" loading="lazy"
+          alt="A row of photos of freshly baked sourdough loaves on baking paper, under the heading From the oven."></div>
+        <figcaption>"From the oven": real loaves, photographed in my kitchen.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap phones" style="grid-template-columns:repeat(3,minmax(0,1fr));max-width:980px">
+      <figure class="figure">
+        <div class="frame"><img src="/assets/img/breadclub-mobile-en.jpg" width="780" height="1688" loading="lazy" alt="The homepage on a phone, in English."></div>
+        <figcaption>English.</figcaption>
+      </figure>
+      <figure class="figure">
+        <div class="frame"><img src="/assets/img/breadclub-mobile-he.jpg" width="780" height="1688" loading="lazy" alt="The homepage on a phone, in Hebrew."></div>
+        <figcaption>Hebrew.</figcaption>
+      </figure>
+      <figure class="figure">
+        <div class="frame"><img src="/assets/img/breadclub-mobile-order.jpg" width="780" height="1688" loading="lazy" alt="The order page on a phone."></div>
+        <figcaption>Ordering on a phone.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head" style="margin-bottom:28px">
+        <h2>See it live</h2>
+        <p>The Bread Club is open for orders. Have a look, and order a loaf if you're nearby.</p>
+      </div>
+      <div class="cs-cta">
+        <a class="btn btn-dark" href="https://thebreadclub.github.io" target="_blank" rel="noopener">Visit The Bread Club ↗</a>
+        <a class="text" href="/#contact">Talk to me about your project</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Eliana</span>
+    <a href="/he/work/the-bread-club/" lang="he" hreflang="he">לגרסה בעברית</a>
+  </div>
+</footer>
+</body>
+</html>
