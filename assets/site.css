@@ -95,7 +95,10 @@ section { padding-block: clamp(64px, 10vw, 128px); }
 .section-head p { margin: 0; color: var(--ink-2); max-width: 34em; }
 
 /* ---------- Work ---------- */
-.project { display: block; text-decoration: none; }
+.project {
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 24px clamp(28px, 4vw, 56px); align-items: center; text-decoration: none;
+}
 .project:hover { color: inherit; }
 .project-media {
   background: var(--paper-2);
@@ -107,10 +110,11 @@ section { padding-block: clamp(64px, 10vw, 128px); }
 @media (prefers-reduced-motion: reduce) { .project-media img { transition: none; } }
 
 .project-meta {
-  display: grid; grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr));
-  gap: 16px 32px; padding-top: 22px; align-items: baseline;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px 24px; align-items: baseline;
 }
-.project-meta h3 { font-size: clamp(26px, 3vw, 36px); line-height: 1.15; }
+.project-meta .title { grid-column: 1 / -1; padding-bottom: 18px; border-bottom: 1px solid var(--rule); }
+.project-meta h3 { font-size: clamp(24px, 2.4vw, 30px); line-height: 1.15; }
 .project-meta .sub { color: var(--ink-2); margin: 6px 0 0; max-width: 30em; }
 .meta-item { font-size: 15px; }
 .meta-item span { display: block; color: var(--ink-3); font-size: 13px; }
@@ -195,8 +199,7 @@ section { padding-block: clamp(64px, 10vw, 128px); }
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
   .section-head, .about-grid, .cs-text { grid-template-columns: minmax(0, 1fr); }
-  .project-meta { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .project-meta .title { grid-column: 1 / -1; }
+  .project { grid-template-columns: minmax(0, 1fr); }
   .steps { grid-template-columns: minmax(0, 1fr); }
   .steps li, .steps li:first-child { border-inline-start: 0; padding-inline-start: 0; padding: 24px 0; border-top: 1px solid var(--rule); }
   .steps li:first-child { border-top: 0; padding-top: 0; }
